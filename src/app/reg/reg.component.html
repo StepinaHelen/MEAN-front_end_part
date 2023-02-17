@@ -1,0 +1,46 @@
+<div class="container">
+  <form (submit)="signUp()">
+    <h1 class="h3 mb-3 fw-normal">Please sign up</h1>
+
+    <div>
+      <input
+        type="name"
+        class="form-control"
+        placeholder="Name"
+        [(ngModel)]="name"
+        [ngModelOptions]="{ standalone: true }"
+      />
+    </div>
+    <div>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Login"
+        [(ngModel)]="login"
+        [ngModelOptions]="{ standalone: true }"
+      />
+    </div>
+
+    <div>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="name@example.com"
+        [(ngModel)]="email"
+        [ngModelOptions]="{ standalone: true }"
+      />
+    </div>
+    <div class="mb-3">
+      <input
+        type="password"
+        class="form-control"
+        placeholder="Password"
+        [(ngModel)]="password"
+        [ngModelOptions]="{ standalone: true }"
+      />
+    </div>
+
+    <button class="w-100 btn btn-lg text-bg-dark" type="submit">Sign up</button>
+    <p class="mt-5 mb-3 text-muted">© 2017–2023</p>
+  </form>
+</div>
