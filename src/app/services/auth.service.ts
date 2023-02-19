@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
@@ -15,22 +15,12 @@ export class AuthService {
   ) {}
 
   registerUser(user) {
-    let headers = new HttpHeaders();
+    return this.http.post('http://localhost:3000/account/reg', user);
 
-    headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/account/reg', user, {
-      headers: headers,
-    });
-    // .pipe(map((res: any) => res.json()));
   }
 
   authUser(user) {
-    let headers = new HttpHeaders();
-
-    headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/account/auth', user, {
-      headers: headers,
-    });
+    return this.http.post('http://localhost:3000/account/auth', user, );
   }
 
   storeUser(token, user) {
@@ -48,17 +38,23 @@ export class AuthService {
   }
 
   isAuthenticated() {
-    console.log(this.token, 'this.token');
-    // return this.jwtHelperService.isTokenExpired(localStorage.getItem('token'));
+    // console.log(this.token, 'this.token');
     return this.jwtHelperService.tokenGetter();
   }
 
   createPost(post) {
-    let headers = new HttpHeaders();
+    return this.http.post('http://localhost:3000/account/dashboard', post);
+  }
 
-    headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/account/dashboard', post, {
-      headers: headers,
-    });
+  getAllPosts():Observable<any[]> {
+     return this.http.get('http://localhost:3000').pipe(map((res: any) => res));
+  }
+
+  getPostById(id: any):Observable<any> {
+    return this.http.get(`http://localhost:3000/post/${id}`).pipe(map((res: any) => res));
+  }
+
+  deletePost(id) {
+    return this.http.delete(`http://localhost:3000/post/${id}`).pipe(map((res: any) => res));
   }
 }

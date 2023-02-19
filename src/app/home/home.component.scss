@@ -27,3 +27,30 @@
 .pos-rel {
   position: relative;
 }
+
+quill-view::ng-deep .ql-editor {
+  padding: 0;
+}
+
+quill-view::ng-deep>div>div.ql-editor>p>img {
+  height: 250px;
+  display: block;
+  margin: 0 auto;
+}
+
+div.quill-text>quill-view::ng-deep>div>div.ql-editor {
+  height: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.link {
+  display: block;
+  text-align: right;
+}
+.nav a {
+  cursor: pointer;
+  &:hover {
+    background-color: rgb(232, 232, 232);
+  }
+}

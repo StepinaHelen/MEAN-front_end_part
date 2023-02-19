@@ -14,8 +14,12 @@ import { AuthService } from './services/auth.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 import { QuillModule } from 'ngx-quill';
+import { PostComponent } from './post/post.component';
+import { SortingPipe } from './pipes/sorting.pipe';
+import { AuthInterceptor } from './interceptors/auth-interceptor.service';
 
 export function tokenGetter() {
+  // console.log(localStorage.getItem('token'))
   return localStorage.getItem('token');
 }
 
@@ -27,6 +31,8 @@ export function tokenGetter() {
     RegComponent,
     AuthComponent,
     DashboardComponent,
+    PostComponent,
+    SortingPipe,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +49,11 @@ export function tokenGetter() {
       },
     }),
   ],
-  providers: [],
+  providers: [{
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
