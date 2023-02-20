@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "MEAN-front_end_part": {
+    "mean-front-end-part": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/MEAN-front_end_part",
+            "outputPath": "dist/mean-front-end-part",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -64,10 +64,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "MEAN-front_end_part:build:production"
+              "browserTarget": "mean-front-end-part:build:production"
             },
             "development": {
-              "browserTarget": "MEAN-front_end_part:build:development"
+              "browserTarget": "mean-front-end-part:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -75,7 +75,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "MEAN-front_end_part:build"
+            "browserTarget": "mean-front-end-part:build"
           }
         },
         "test": {

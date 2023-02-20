@@ -1,1 +1,1 @@
-# MEAN-front_end_part
+# mean-front-end-part
