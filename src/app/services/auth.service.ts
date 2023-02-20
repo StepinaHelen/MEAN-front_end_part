@@ -16,11 +16,10 @@ export class AuthService {
 
   registerUser(user) {
     return this.http.post('http://localhost:3000/account/reg', user);
-
   }
 
   authUser(user) {
-    return this.http.post('http://localhost:3000/account/auth', user, );
+    return this.http.post('http://localhost:3000/account/auth', user);
   }
 
   storeUser(token, user) {
@@ -46,15 +45,25 @@ export class AuthService {
     return this.http.post('http://localhost:3000/account/dashboard', post);
   }
 
-  getAllPosts():Observable<any[]> {
-     return this.http.get('http://localhost:3000').pipe(map((res: any) => res));
+  getAllPosts(): Observable<any[]> {
+    return this.http.get('http://localhost:3000').pipe(map((res: any) => res));
   }
 
-  getPostById(id: any):Observable<any> {
-    return this.http.get(`http://localhost:3000/post/${id}`).pipe(map((res: any) => res));
+  getPostById(id: any): Observable<any> {
+    return this.http
+      .get(`http://localhost:3000/post/${id}`)
+      .pipe(map((res: any) => res));
   }
 
   deletePost(id) {
-    return this.http.delete(`http://localhost:3000/post/${id}`).pipe(map((res: any) => res));
+    return this.http
+      .delete(`http://localhost:3000/post/${id}`)
+      .pipe(map((res: any) => res));
+  }
+
+  updatePostById(id: any, post: any): Observable<any> {
+    return this.http
+      .patch(`http://localhost:3000/post/${id}`, post)
+      .pipe(map((res: any) => res));
   }
 }
