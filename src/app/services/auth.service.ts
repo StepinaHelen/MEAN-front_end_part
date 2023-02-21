@@ -9,17 +9,18 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 export class AuthService {
   token: any;
   user: any;
+  API_URL = 'https://blog-api-lnc0.onrender.com';
   constructor(
     private http: HttpClient,
     private jwtHelperService: JwtHelperService
   ) {}
 
   registerUser(user) {
-    return this.http.post('http://localhost:3000/account/reg', user);
+    return this.http.post(`${this.API_URL}/reg`, user);
   }
 
   authUser(user) {
-    return this.http.post('http://localhost:3000/account/auth', user);
+    return this.http.post(`${this.API_URL}/auth`, user);
   }
 
   storeUser(token, user) {
@@ -37,33 +38,32 @@ export class AuthService {
   }
 
   isAuthenticated() {
-    // console.log(this.token, 'this.token');
     return this.jwtHelperService.tokenGetter();
   }
 
   createPost(post) {
-    return this.http.post('http://localhost:3000/account/dashboard', post);
+    return this.http.post(`${this.API_URL}/dashboard`, post);
   }
 
   getAllPosts(): Observable<any[]> {
-    return this.http.get('http://localhost:3000').pipe(map((res: any) => res));
+    return this.http.get(this.API_URL).pipe(map((res: any) => res));
   }
 
   getPostById(id: any): Observable<any> {
     return this.http
-      .get(`http://localhost:3000/post/${id}`)
+      .get(`${this.API_URL}/post/${id}`)
       .pipe(map((res: any) => res));
   }
 
   deletePost(id) {
     return this.http
-      .delete(`http://localhost:3000/post/${id}`)
+      .delete(`${this.API_URL}/post/${id}`)
       .pipe(map((res: any) => res));
   }
 
   updatePostById(id: any, post: any): Observable<any> {
     return this.http
-      .patch(`http://localhost:3000/post/${id}`, post)
+      .patch(`${this.API_URL}/post/${id}`, post)
       .pipe(map((res: any) => res));
   }
 }
