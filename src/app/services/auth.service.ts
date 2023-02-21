@@ -42,7 +42,7 @@ export class AuthService {
   }
 
   createPost(post) {
-    return this.http.post(`${this.API_URL}/dashboard`, post);
+    return this.http.post(`${this.API_URL}/account/dashboard`, post);
   }
 
   getAllPosts(): Observable<any[]> {
