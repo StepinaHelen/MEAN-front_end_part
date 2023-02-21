@@ -16,11 +16,11 @@ export class AuthService {
   ) {}
 
   registerUser(user) {
-    return this.http.post(`${this.API_URL}/reg`, user);
+    return this.http.post(`${this.API_URL}/account/reg`, user);
   }
 
   authUser(user) {
-    return this.http.post(`${this.API_URL}/auth`, user);
+    return this.http.post(`${this.API_URL}/account/auth`, user);
   }
 
   storeUser(token, user) {
